@@ -28,15 +28,22 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   bloc: ^8.1.0
+  carousel_slider: ^4.1.1
+  connectivity_plus: ^2.3.6+1
   cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
   equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
   get_it: ^7.2.0
+  getwidget: ^3.0.1
   google_fonts: ^3.0.1
   http: ^0.13.5
+  one_context: ^2.1.0
   rxdart: ^0.27.5
+  stream_transform: ^2.0.0
+  bloc_concurrency: ^0.2.0
 
 dev_dependencies:
   flutter_lints: ^1.0.0
