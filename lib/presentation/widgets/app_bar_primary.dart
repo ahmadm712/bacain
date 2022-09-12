@@ -25,7 +25,7 @@ class AppbarPrimary extends StatelessWidget {
       ),
       actions: [
         Padding(
-          padding: const EdgeInsets.only(right: 12),
+          padding: const EdgeInsets.only(right: 12, left: 12),
           child: GestureDetector(
             onTap: () {},
             child: Image.asset(

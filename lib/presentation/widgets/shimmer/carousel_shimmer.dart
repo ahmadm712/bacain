@@ -7,13 +7,14 @@ class CarouselShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GFShimmer(
+      mainColor: Colors.white,
       child: Container(
         height: 170,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: Colors.white38,
+          color: Colors.white60,
           borderRadius: BorderRadius.circular(
-            6,
+            14,
           ),
         ),
       ),

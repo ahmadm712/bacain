@@ -1,3 +1,8 @@
+import 'package:bacain/features/carousel/data/datasources/carousel_remote_source.dart';
+import 'package:bacain/features/carousel/data/repositories/carousel_repositpory_impl.dart';
+import 'package:bacain/features/carousel/domain/repositories/carousel_repository.dart';
+import 'package:bacain/features/carousel/domain/usecases/get_carousel.dart';
+import 'package:bacain/features/carousel/presentation/bloc/carousel_bloc.dart';
 import 'package:bacain/features/connection_checker/presentation/bloc/connection_checker_bloc.dart';
 import 'package:bacain/features/list_airport/data/datasources/airport_remote_source.dart';
 import 'package:bacain/features/list_airport/data/dummy/shoes_model.dart';
@@ -18,16 +23,23 @@ void init() {
   // Bloc
   locator.registerFactory(() => ListAirportBloc(locator()));
   locator.registerFactory(() => ConnectionCheckerBloc());
+  locator.registerFactory(() => CarouselBloc(locator()));
   // Use case
   locator.registerLazySingleton(() => GetListAirport(repository: locator()));
+  locator.registerLazySingleton(() => GetCarousel(repository: locator()));
 
   // Repository impl
   locator.registerLazySingleton<AirportRepository>(
       () => AirportRepositoryImpl(remoteDataSource: locator()));
+  locator.registerLazySingleton<CarouselRepository>(
+      () => CarouselRepositoryImpl(remoteDataSource: locator()));
 
   // Airport data sources
   locator.registerLazySingleton<AirportRemoteDataSource>(
       () => AirportRemoteDataSourceImpl(client: locator()));
+
+  locator.registerLazySingleton<CarouselRemoteDataSource>(
+      () => CarouselRemoteDataImpl(client: locator()));
 
   // external
   locator.registerLazySingleton(() => http.Client());

@@ -1,6 +1,10 @@
 import 'package:bacain/features/list_airport/domain/entities/airport.dart';
+import 'package:bacain/l10n/locale_keys.g.dart';
+import 'package:bacain/styles/colors.dart';
 import 'package:bacain/utils/global_function.dart';
 import 'package:bacain/utils/injection.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ShoesCard extends StatelessWidget {
@@ -27,17 +31,30 @@ class ShoesCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(
-            airport.airline!.first.logo!,
+          CachedNetworkImage(
+            imageUrl: airport.airline!.first.logo!,
             width: double.infinity,
             height: 100,
             fit: BoxFit.fitWidth,
+            progressIndicatorBuilder: (context, url, downloadProgress) =>
+                SizedBox(
+              height: 20,
+              width: 20,
+              child: Center(
+                child: CircularProgressIndicator.adaptive(
+                  value: downloadProgress.progress,
+                  strokeWidth: 1,
+                  backgroundColor: kColorPrimary,
+                ),
+              ),
+            ),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                airport.name ?? "",
+                LocaleKeys.AkhenatenName.tr(),
                 style: const TextStyle(
                   fontSize: 16,
                 ),

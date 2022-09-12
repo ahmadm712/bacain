@@ -1,11 +1,13 @@
+import 'package:bacain/features/carousel/presentation/widgets/carousel_section.dart';
 import 'package:bacain/features/connection_checker/presentation/bloc/connection_checker_bloc.dart';
+import 'package:bacain/l10n/locale_keys.g.dart';
 import 'package:bacain/presentation/widgets/app_bar_primary.dart';
 import 'package:bacain/presentation/widgets/list_shoes.dart';
 import 'package:bacain/presentation/widgets/widgets.dart';
-import 'package:bacain/utils/constants.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -18,6 +20,12 @@ class _HomepageState extends State<Homepage> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    getToken() async {
+      final token = await FirebaseMessaging.instance.getToken();
+      print('${token} ini token');
+    }
+
+    getToken().then((value) => print('${value} ini token'));
     return GestureDetector(
       onHorizontalDragUpdate: (details) {
         if (details.primaryDelta! > 0) {
@@ -65,33 +73,7 @@ class HomeWidgets extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // const CarouselShimmer(),
-          CarouselSlider(
-            options: CarouselOptions(
-              height: 170,
-              viewportFraction: 1,
-            ),
-            items: [1, 2, 3, 4, 5].map((i) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Container(
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.all(24),
-                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(14)),
-                    child: Image.asset(
-                      '${imageAsset}nike_shoes.png',
-                      width: double.infinity,
-                      height: 200,
-                      fit: BoxFit.contain,
-                    ),
-                  );
-                },
-              );
-            }).toList(),
-          ),
+          const CarouselSection(),
           const SizedBox(
             height: 20,
           ),
@@ -99,18 +81,18 @@ class HomeWidgets extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
-                  'New Shoes',
-                  style: TextStyle(
+                  LocaleKeys.ShoesTitle.tr(),
+                  style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                ListShoes(),
+                const ListShoes(),
               ],
             ),
           )
