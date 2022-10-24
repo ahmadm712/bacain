@@ -2,8 +2,6 @@
 //
 //     final carouselModel = carouselModelFromJson(jsonString);
 
-import 'dart:convert';
-
 import 'package:bacain/features/carousel/domain/entities/carousel.dart';
 import 'package:equatable/equatable.dart';
 

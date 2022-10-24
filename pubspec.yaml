@@ -48,6 +48,14 @@ dependencies:
   one_context: ^2.1.0
   rxdart: ^0.27.5
   stream_transform: ^2.0.0
+  awesome_notifications: ^0.6.21
+  firebase_storage: ^10.3.8
+  permission_handler: ^10.0.0
+  image_picker: ^0.8.5+3
+  google_maps_flutter: ^2.2.0
+  geocoding: ^2.0.5
+  geolocator: ^9.0.1
+  device_preview: ^1.1.0
 
 dev_dependencies:
   flutter_lints: ^1.0.0

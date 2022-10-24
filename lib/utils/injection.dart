@@ -10,6 +10,7 @@ import 'package:bacain/features/list_airport/data/repositories/airport_repositor
 import 'package:bacain/features/list_airport/domain/repositories/airport_repository.dart';
 import 'package:bacain/features/list_airport/domain/usecases/get_list_airport.dart';
 import 'package:bacain/features/list_airport/presentation/bloc/list_airport_bloc.dart';
+import 'package:bacain/services/location_services.dart';
 import 'package:bacain/utils/global_function.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
@@ -46,4 +47,5 @@ void init() {
 
   //Other
   locator.registerFactory(() => GlobalFunction());
+  locator.registerFactory(() => LocationServices());
 }

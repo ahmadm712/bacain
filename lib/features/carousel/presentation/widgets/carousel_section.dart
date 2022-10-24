@@ -32,7 +32,6 @@ class CarouselSection extends StatelessWidget {
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      margin: const EdgeInsets.symmetric(horizontal: 5.0),
                       decoration: BoxDecoration(
                           color: Colors.transparent,
                           borderRadius: BorderRadius.circular(14)),
